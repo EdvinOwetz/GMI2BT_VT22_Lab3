@@ -1,0 +1,4 @@
+
+
+class HistoryEntry:
+    pass
