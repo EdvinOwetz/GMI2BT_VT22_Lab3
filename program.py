@@ -1,9 +1,11 @@
+from apihandler import APIhandler
 # API-key: ac58a803
 # Append to all requests sent to the API
 
 # --- LOG ---
 # Nils och Edvin:
 # log startade 2/2 kl 10:30 -> 12:15
+# log startade 3/2 kl 13:15 -> 
 
 # Nils:
 
@@ -11,29 +13,11 @@
 # log startade 2/2 15:15 -> 15:30
 
 
-
-
-import requests
 import json
-# param={"apikey":"ac58a803","i":"tt3896198"}
-# link = "http://www.omdbapi.com/"
-# result = requests.get(link,params=param)
-# data=result.json()
 
-# print(data)
-# filename="request_data_id.json"
-# with open(filename,"w",encoding="utf-8") as jsonfile:
-#     jsonfile.write(json.dumps(data))
-    
-    
-param={"apikey":"ac58a803","s":"star"}
-link = "http://www.omdbapi.com/"
-result = requests.get(link,params=param)
-data=result.json()
-
+data=APIhandler.general_search("stargate")
 print(data)
-filename="request_data_search.json"
-with open(filename,"w",encoding="utf-8") as jsonfile:
+with open("request_data_search.json","w",encoding="utf-8") as jsonfile:
     jsonfile.write(json.dumps(data))
 
 

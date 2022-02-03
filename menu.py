@@ -2,7 +2,7 @@
 
 class Menu:
     def __init__(self):
-        # ARBETSLISTA HÄR
+        # ARBETSLISTA/DICT HÄR
         pass
     
     def show_menu(self):
