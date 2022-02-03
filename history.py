@@ -1,4 +1,8 @@
 
 
 class History:
-    pass
+    __init__(self):
+        pass
+    #lista med historyEntries
+    
+    #funktioner för att ladda och spara historiken
