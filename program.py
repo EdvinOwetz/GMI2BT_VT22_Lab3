@@ -1,11 +1,12 @@
-from apihandler import APIhandler
+
 # API-key: ac58a803
 # Append to all requests sent to the API
 
 # --- LOG ---
 # Nils och Edvin:
 # log startade 2/2 kl 10:30 -> 12:15
-# log startade 3/2 kl 13:15 -> 
+# log startade 3/2 kl 13:15 -> 15:00
+# log startade 8/2 kl 10:30 -> 12:15
 
 # Nils:
 
@@ -13,13 +14,16 @@ from apihandler import APIhandler
 # log startade 2/2 15:15 -> 15:30
 
 
-import json
+# import json
+#from apihandler import APIhandler
+# data=APIhandler.general_search("stargate")
+# print(data)
+# with open("request_data_search.json","w",encoding="utf-8") as jsonfile:
+#     jsonfile.write(json.dumps(data))
 
-data=APIhandler.general_search("stargate")
-print(data)
-with open("request_data_search.json","w",encoding="utf-8") as jsonfile:
-    jsonfile.write(json.dumps(data))
+from menu import Menu
 
+Menu()
 
 # PSEUDO MENY
 # 

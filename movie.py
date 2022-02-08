@@ -10,4 +10,7 @@ class Movie:
         return APIhandler.id_search(self.imdb_id)
         
     def to_dict(self)->dict:
+        return {"Title":self.title,"Year":self.year,"imdbID":self.imdb_id}
+    
+    def print_str(self)->str:
         pass

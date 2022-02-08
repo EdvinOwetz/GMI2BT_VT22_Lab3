@@ -1,5 +1,10 @@
 import requests
 
+from movie import Movie
+
+class APICallResponseEmpty(Exception):
+    pass
+
 class APIhandler:
 
     apikey = "ac58a803"
@@ -39,3 +44,10 @@ class APIhandler:
         # hsitory entry 
         # add to history list 
         return data
+    
+    @staticmethod
+    def general_search_to_movie_list(search):
+        movie_list_dict = APIhandler.general_search(search)
+        if int(movie_list_dict["totalResults"]) == 0:
+            raise(APICallResponseEmpty)
+        return [Movie(item) for item in movie_list_dict["Search"]]

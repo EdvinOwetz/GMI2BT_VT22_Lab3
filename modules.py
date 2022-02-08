@@ -1,4 +1,7 @@
+from apihandler import APIhandler , APICallResponseEmpty
 from movie import Movie
+from history import History
+#from common import 
 # A file containing methods and functions
 
 # Sök på film
@@ -8,30 +11,51 @@ from movie import Movie
 
 
 
-def movie_search():
-    #söker
-    #visar resultat (flera movies)
-    #väljer
-    #söker på id
-    #lägger till movie i historik
-    #visar resultat (en movie)
-    pass
+def movie_search(history:History) -> None:
+    search = input("\nAnge en sökterm: ")
+    try:
+        movie_list = APIhandler.general_search_to_movie_list(search)
+        chosen_movie = choose_movie(movie_list)
+        history.add_movie(chosen_movie)
+        show_movie(chosen_movie)
+    except APICallResponseEmpty:
+        print("Error")
 
-def show_history():
-    #visar sökhistorik
-    #väljer
-    #söker på id
-    #visar resultat (en movie)
-    pass
+def show_history(history:History) -> None:
+    listan = history.history_list
+    the_movie = choose_movie(listan)
+    show_movie(the_movie)
 
 def choose_movie(movie_list:list[Movie]) -> Movie:
+    if len(movie_list)==0:
+        print("Error, nothing in list")
+        return
+    elif len(movie_list)==1:
+        return movie_list[0]
+
+    for index in range(len(movie_list)):
+        print(f"{str(index+1).ljust(2)}: {movie_list[index].title} , {movie_list[index].year}")
+    while True:
+        choose = input("\nAnge en filmnummer i listan: ")
+    return movie_list[choose]
     #tar in en lista med movies 
     #väljen
-    #returnerna den 
-    pass
+    #returnerna den
 
 def show_movie(movie:Movie) -> None:
+    
     #sök på id
     #Movie objectet.get_details()
     #vsia resultat på lämpligt sätt?
-    pass
+    movie_dict=movie.get_details()
+    movie_text=f"Titel: {movie_dict['Title']}\n"
+    movie_text += f"Released: {movie_dict['Released']}\n"
+    movie_text += f"Runtime: {movie_dict['Runtime']}\n"
+    movie_text += f"Genre: {movie_dict['Genre']}\n"
+    movie_text += f"Director: {movie_dict['Director']}\n"
+    movie_text += f"Actors: {movie_dict['Actors']}\n"
+    movie_text += f"Country: {movie_dict['Country']}\n"
+    movie_text += f"Language: {movie_dict['Language']}\n"
+    movie_text += f"Imdb rating: {movie_dict['imdbRating']}\n"
+    movie_text += f"Summary of the plot: {movie_dict['Plot']}\n"
+    print(movie_text)
