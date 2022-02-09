@@ -1,13 +1,7 @@
+from typing import NoReturn
 from apihandler import APIhandler , APICallResponseEmpty
 from movie import Movie
 from history import History
-#from common import 
-# A file containing methods and functions
-
-# Sök på film
-
-# Visa sökhistorik (senaste)
-    # Returnera en lista vari användaren kan välja index och visa mer info om vald film
 
 
 
@@ -23,16 +17,15 @@ def movie_search(history:History) -> None:
 
 def show_history(history:History) -> None:
     listan = history.history_list
+    if len(listan)==0:
+        print("Error: Listan är tom!")
+        return
     the_movie = choose_movie(listan)
     show_movie(the_movie)
 
-def choose_movie(movie_list:list[Movie]) -> Movie:
-    if len(movie_list)==0:
-        print("Error, nothing in list")
-        return
-    elif len(movie_list)==1:
+def choose_movie(movie_list:list[Movie]):
+    if len(movie_list)==1:
         return movie_list[0]
-
     for index in range(len(movie_list)):
         print(f"{str(index+1).ljust(2)}: {movie_list[index].title} , {movie_list[index].year}")
     while True:
@@ -45,15 +38,10 @@ def choose_movie(movie_list:list[Movie]) -> Movie:
         else:
             print("Fel index")
     return movie_list[choose - 1]
-    #tar in en lista med movies 
-    #väljen
-    #returnerna den
+
 
 def show_movie(movie:Movie) -> None:
     
-    #sök på id
-    #Movie objectet.get_details()
-    #visa resultat på lämpligt sätt?
     movie_dict=movie.get_details()
     movie_text=f"Titel: {movie_dict['Title']}\n"
     movie_text += f"Released: {movie_dict['Released']}\n"
