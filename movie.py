@@ -1,4 +1,4 @@
-from apihandler import APIhandler
+
 
 class Movie:
     def __init__(self,json_dict:str) -> None:
@@ -7,6 +7,7 @@ class Movie:
         self.imdb_id=json_dict["imdbID"]
         
     def get_details(self)->dict:
+        from apihandler import APIhandler
         return APIhandler.id_search(self.imdb_id)
         
     def to_dict(self)->dict:

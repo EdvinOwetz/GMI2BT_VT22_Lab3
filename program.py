@@ -7,6 +7,7 @@
 # log startade 2/2 kl 10:30 -> 12:15
 # log startade 3/2 kl 13:15 -> 15:00
 # log startade 8/2 kl 10:30 -> 12:15
+# log startade 9/2 kl 10:15 -> 
 
 # Nils:
 
