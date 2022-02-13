@@ -1,4 +1,5 @@
 class Movie:
+    
     def __init__(self, json_dict: str) -> None:
         self.title = json_dict["Title"]
         self.year = json_dict["Year"]

@@ -1,10 +1,8 @@
 import requests
 from movie import Movie
 
-
 class APICallResponseEmpty(Exception):
     pass
-
 
 class APIhandler:
 

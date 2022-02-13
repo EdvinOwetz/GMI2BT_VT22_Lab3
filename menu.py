@@ -19,14 +19,14 @@ class Menu:
         text_len = 0
         for line in text:
             text_len = max(text_len, len(line))
-        text_len += h_padding*2
+        text_len += h_padding * 2
         dashes = h_char * (text_len + 2)
-        print("\n"+dashes)
+        print("\n" + dashes)
         for line in text:
-            space = text_len-len(line)
-            print(v_char+(" "*int(space/2))+line +
-                  (" "*int(round(space/2, 0)))+v_char)
-        print(dashes, end="\n\n")
+            space = text_len - len(line)
+            print(v_char + (" "*int(space/2)) + line +
+                  (" " * int(round(space/2, 0))) + v_char)
+        print(dashes, end = "\n\n")
 
     def show_menu(self):
         try:
@@ -60,7 +60,6 @@ class Menu:
         except APICallResponseEmpty:
             no_result()
 
-
     def show_history(self) -> None:
         listan = self.history.history_list
         if len(listan) == 0:
@@ -68,7 +67,6 @@ class Menu:
             return
         the_movie = self.choose_movie(listan)
         self.show_movie(the_movie)
-
 
     def choose_movie(self,movie_list: list[Movie]):
         if len(movie_list) == 1:
@@ -82,7 +80,6 @@ class Menu:
                 break
             menu_invalid_opt()
         return movie_list[choose - 1]
-
 
     def show_movie(self,movie: Movie) -> None:
         movie_dict = movie.get_details()

@@ -1,10 +1,8 @@
 import json
 from movie import Movie
 
-
 class CouldNotLoadFile(Exception):
     pass
-
 
 class History:
 
@@ -25,7 +23,7 @@ class History:
         if len(self.history_list) != 0:
             with open(self.filename, "w", encoding="utf-8-sig") as file:
                 file.write(json.dumps(self.to_dict(),
-                           indent=4, ensure_ascii=False))
+                           indent = 4, ensure_ascii = False))
 
     def load(self) -> None:
         try:
